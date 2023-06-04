@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Form</title>
+    <style>
+        .is-invalid {
+            border-color: red;
+        }
+        form{
+            width: max-content;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form class="needs-validation" novalidate onsubmit="return validateForm()">
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="firstName">First Name</label>
+                <i class="fas fa-user ml-2 mt-1"></i>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid first name.
+            </div>
+            <div id="firstNameErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="lastName">Last Name</label>
+                <i class="fas fa-user ml-2 mt-1"></i>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid last name.
+            </div>
+            <div id="lastNameErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="email">Email</label>
+                <i class="fas fa-envelope ml-2 mt-1"></i>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid email address.
+            </div>
+            <div id="emailErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="phone">Phone</label>
+                <i class="fas fa-phone ml-2 mt-1"></i>
+                <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid phone number.
+            </div>
+            <div id="phoneErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="address">Address</label>
+                <i class="fas fa-house ml-2 mt-1"></i>
+                <input type="text" class="form-control" id="address" placeholder="Enter Address" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid address.
+            </div>
+            <div id="addressErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="city">City</label>
+                <i class="fas fa-list ml-2 mt-1"></i>
+                <input type="text" class="form-control" id="city" placeholder="Enter City Name" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid city name.
+            </div>
+            <div id="cityErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="state">State</label>
+                <i class="fas fa-list ml-2 mt-1"></i>
+                <input type="text" class="form-control" id="state" placeholder="Enter State Name" required>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid state name.
+            </div>
+            <div id="stateErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="hosting">Hosting?</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="hosting" id="hostingYes" required>
+                <label class="form-check-label" for="hostingYes">Yes</label>
+                <input class="form-check-input" type="radio" name="hosting" id="hostingNo" required>
+                <label class="form-check-label" for="hostingNo">No</label>
+            </div>
+            <div class="invalid-feedback">
+                Please select an option.
+            </div>
+            <div id="hostingErrorMessage" class="error-message"></div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex">
+                <label for="projectDescription">Project Description</label>
+                <i class="fas fa-pen ml-2 mt-1"></i>
+                <textarea class="form-control" id="projectDescription" rows="3" placeholder="Enter Details" required></textarea>
+            </div>
+            <div class="invalid-feedback">
+                Please provide a project description.
+            </div>
+            <div id="projectDescriptionErrorMessage" class="error-message"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var hostingYes = document.getElementById("hostingYes").checked;
+            var hostingNo = document.getElementById("hostingNo").checked;
+            var projectDescription = document.getElementById("projectDescription").value;
+            var isValid = true;
+            if (firstName.trim() === "") {
+                document.getElementById("firstName").classList.add("is-invalid");
+                document.getElementById("firstNameErrorMessage").textContent = "Please provide a valid first name.";
+                isValid = false;
+            } else {
+                document.getElementById("firstName").classList.remove("is-invalid");
+                document.getElementById("firstNameErrorMessage").textContent = "";
+            }
+            if (lastName.trim() === "") {
+                document.getElementById("lastName").classList.add("is-invalid");
+                document.getElementById("lastNameErrorMessage").textContent = "Please provide a valid last name.";
+                isValid = false;
+            } else {
+                document.getElementById("lastName").classList.remove("is-invalid");
+                document.getElementById("lastNameErrorMessage").textContent = "";
+            }
+            if (email.trim() === "") {
+                document.getElementById("email").classList.add("is-invalid");
+                document.getElementById("emailErrorMessage").textContent = "Please provide a valid email address.";
+                isValid = false;
+            } else {
+                document.getElementById("email").classList.remove("is-invalid");
+                document.getElementById("emailErrorMessage").textContent = "";
+            }
+            if (phone.trim() === "") {
+                document.getElementById("phone").classList.add("is-invalid");
+                document.getElementById("phoneErrorMessage").textContent = "Please provide a valid phone number.";
+                isValid = false;
+            } else {
+                document.getElementById("phone").classList.remove("is-invalid");
+                document.getElementById("phoneErrorMessage").textContent = "";
+            }
+            if (address.trim() === "") {
+                document.getElementById("address").classList.add("is-invalid");
+                document.getElementById("addressErrorMessage").textContent = "Please provide a valid address.";
+                isValid = false;
+            } else {
+                document.getElementById("address").classList.remove("is-invalid");
+                document.getElementById("addressErrorMessage").textContent = "";
+            }
+            if (city.trim() === "") {
+                document.getElementById("city").classList.add("is-invalid");
+                document.getElementById("cityErrorMessage").textContent = "Please provide a valid city name.";
+                isValid = false;
+            } else {
+                document.getElementById("city").classList.remove("is-invalid");
+                document.getElementById("cityErrorMessage").textContent = "";
+            }
+            if (state.trim() === "") {
+                document.getElementById("state").classList.add("is-invalid");
+                document.getElementById("stateErrorMessage").textContent = "Please provide a valid state name.";
+                isValid = false;
+            } else {
+                document.getElementById("state").classList.remove("is-invalid");
+                document.getElementById("stateErrorMessage").textContent = "";
+            }
+            if (!hostingYes && !hostingNo) {
+                document.getElementById("hostingErrorMessage").textContent = "Please select an option.";
+                isValid = false;
+            } else {
+                document.getElementById("hostingErrorMessage").textContent = "";
+            }
+            if (projectDescription.trim() === "") {
+                document.getElementById("projectDescription").classList.add("is-invalid");
+                document.getElementById("projectDescriptionErrorMessage").textContent = "Please provide a project description.";
+                isValid = false;
+            } else {
+                document.getElementById("projectDescription").classList.remove("is-invalid");
+                document.getElementById("projectDescriptionErrorMessage").textContent = "";
+            }
+            return isValid;
+        }
+    </script>
+</body>
+</html>
